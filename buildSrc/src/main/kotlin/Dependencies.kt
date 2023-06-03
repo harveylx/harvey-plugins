@@ -30,15 +30,15 @@ object ProjectVersions {
 
 object Libraries {
     private object Versions {
-        const val guice = "5.0.1"
+        const val guice = "7.0.0"
         const val javax = "1.3.2"
-        const val lombok = "1.18.20"
-        const val pf4j = "3.6.0"
-        const val slf4j = "1.7.32"
-        const val gson = "2.8.5"
-        const val apacheCommonsText = "1.2"
-        const val okhttp3 = "4.9.1"
-        const val rxjava = "3.1.2"
+        const val lombok = "1.18.22"
+        const val pf4j = "3.9.0"
+        const val slf4j = "2.0.7"
+        const val gson = "2.10.1"
+        const val apacheCommonsText = "1.10.0"
+        const val okhttp3 = "4.11.0"
+        const val rxjava = "3.1.6"
     }
 
     const val guice = "com.google.inject:guice:${Versions.guice}"
