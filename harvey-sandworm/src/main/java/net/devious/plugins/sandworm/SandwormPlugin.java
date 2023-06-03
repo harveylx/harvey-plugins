@@ -37,6 +37,7 @@ public class SandwormPlugin extends TaskPlugin
 		return tasks;
 	}
 
+	@SuppressWarnings("unused")
 	@Provides
     SandwormConfig provideConfig(ConfigManager configManager)
 	{

@@ -4,7 +4,7 @@ import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;
 import net.runelite.client.config.ConfigItem;
 
-@ConfigGroup("unethicalsandworm")
+@ConfigGroup("harveysandworm")
 public interface SandwormConfig extends Config
 {
 	@ConfigItem(

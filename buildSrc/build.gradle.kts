@@ -34,7 +34,7 @@ repositories {
 
 dependencies {
     implementation(gradleApi())
-    implementation(group = "org.json", name = "json", version = "20190722")
+    implementation(group = "org.json", name = "json", version = "20230227")
     implementation(group = "com.savvasdalkitsis", name = "json-merge", version = "0.0.6")
     implementation(group = "com.squareup.okhttp3", name = "okhttp", version = "4.2.2")
     implementation(kotlin("stdlib-jdk8"))

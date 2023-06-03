@@ -10,6 +10,4 @@ public abstract class SandwormTask implements Task
 {
 	@Delegate
 	private final SandwormPlugin context;
-
-	protected int taskCooldown;
 }

@@ -25,7 +25,7 @@
 
 rootProject.name = "harvey-plugins"
 
-include("unethical-sandworm")
+include("harvey-sandworm")
 
 for (project in rootProject.children) {
     project.apply {
