@@ -13,7 +13,7 @@ import org.pf4j.Extension;
 
 @Extension
 @PluginDescriptor(
-		name = "Unethical Sandworm",
+		name = "Harvey Sandworm",
 		enabledByDefault = false
 )
 public class SandwormPlugin extends TaskPlugin
