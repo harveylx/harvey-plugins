@@ -1,0 +1,14 @@
+[{
+  "projectUrl": "",
+  "provider": "harvey",
+  "name": "Harvey Sandworm",
+  "description": "Digs for sandworms cos favour sucks",
+  "id": "harveysandworm-plugin",
+  "releases": [{
+    "date": "2023-06-03",
+    "sha512sum": "E311BF7483533DEA54AE4BA96F180ACA320AA67A4F670A50F17BF7864E14D6E7E4320FE466920C5F6460CF457872F74F9616760EA96B26D0ADB69F7D1C0B118F",
+    "version": "0.0.1",
+    "url": "https://github.com/harvey/harvey-plugins/blob/master/release/unethical-sandworm-0.0.1.jar?raw=true",
+    "requires": "^1.0.0"
+  }]
+}]
