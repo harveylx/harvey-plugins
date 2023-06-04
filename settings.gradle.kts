@@ -26,6 +26,7 @@
 rootProject.name = "harvey-plugins"
 
 include("harvey-sandworm")
+include("harvey-dynamite")
 
 for (project in rootProject.children) {
     project.apply {
