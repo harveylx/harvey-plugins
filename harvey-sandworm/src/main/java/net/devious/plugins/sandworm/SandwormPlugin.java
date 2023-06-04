@@ -1,11 +1,13 @@
 package net.devious.plugins.sandworm;
 
 import com.google.inject.Inject;
-import com.google.inject.Provides;
 import lombok.Getter;
-import net.devious.plugins.sandworm.tasks.Sandworm;
+import lombok.Setter;
+import net.devious.plugins.sandworm.tasks.BuyBuckets;
+import net.devious.plugins.sandworm.tasks.CheckInventory;
+import net.devious.plugins.sandworm.tasks.Dig;
+import net.devious.plugins.sandworm.tasks.GoToShop;
 import net.runelite.api.Client;
-import net.runelite.client.config.ConfigManager;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.unethicalite.api.plugins.Task;
 import net.unethicalite.api.plugins.TaskPlugin;
@@ -20,12 +22,15 @@ public class SandwormPlugin extends TaskPlugin
 {
 	private final Task[] tasks =
 			{
-					new Sandworm(this)
+					new CheckInventory(this),
+					new GoToShop(this),
+					new BuyBuckets(this),
+					new Dig(this)
 			};
 
-	@Inject
 	@Getter
-	private SandwormConfig config;
+	@Setter
+	public boolean goToShop = false;
 
 	@Inject
 	@Getter
@@ -35,12 +40,5 @@ public class SandwormPlugin extends TaskPlugin
 	public Task[] getTasks()
 	{
 		return tasks;
-	}
-
-	@SuppressWarnings("unused")
-	@Provides
-    SandwormConfig provideConfig(ConfigManager configManager)
-	{
-		return configManager.getConfig(SandwormConfig.class);
 	}
 }
