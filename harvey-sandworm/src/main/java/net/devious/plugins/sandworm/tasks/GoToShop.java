@@ -29,6 +29,7 @@ public class GoToShop extends SandwormContext
     @Override
     public int execute()
     {
+
         System.out.println("we here");
         if (Movement.isWalking())
             return -1;

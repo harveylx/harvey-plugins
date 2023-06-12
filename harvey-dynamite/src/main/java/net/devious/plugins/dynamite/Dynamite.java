@@ -36,7 +36,7 @@ public class Dynamite extends DynamiteContext
             Widgets.get(WidgetInfo.BANK_CONTAINER.getGroupId(), 2, 11).interact(0);
             Time.sleep(1000);
         }
-        if (!Inventory.contains(item -> item.getId() == 1759))
+        if (!Inventory.contains(item -> item.getId() == 13572))
         {
             NPC banker = NPCs.getNearest("Banker");
             banker.interact("Bank");

@@ -27,6 +27,9 @@ rootProject.name = "harvey-plugins"
 
 include("harvey-sandworm")
 include("harvey-dynamite")
+include("harvey-animated-armour")
+
+//include("harvey-prayer-flicker")
 
 for (project in rootProject.children) {
     project.apply {
