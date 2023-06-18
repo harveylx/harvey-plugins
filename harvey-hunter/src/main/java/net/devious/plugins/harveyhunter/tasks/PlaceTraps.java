@@ -20,7 +20,10 @@ public class PlaceTraps extends HunterContext
     @Override
     public boolean validate()
     {
-        return true;
+        return !Players.getLocal().isAnimating()
+                && !Players.getLocal().isInteracting()
+                && !Players.getLocal().isMoving()
+                && Players.getLocal().isIdle();
     }
 
     @Override
