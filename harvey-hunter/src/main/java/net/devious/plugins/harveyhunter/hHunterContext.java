@@ -5,8 +5,8 @@ import lombok.experimental.Delegate;
 import net.unethicalite.api.plugins.Task;
 
 @RequiredArgsConstructor
-public abstract class HunterContext implements Task
+public abstract class hHunterContext implements Task
 {
     @Delegate
-    private final HarveyHunterPlugin context;
+    private final hHunterPlugin context;
 }

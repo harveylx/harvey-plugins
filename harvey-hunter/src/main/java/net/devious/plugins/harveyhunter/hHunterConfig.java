@@ -7,7 +7,7 @@ import net.runelite.client.config.ConfigItem;
 import net.runelite.client.config.ConfigSection;
 
 @ConfigGroup("harveyhunter")
-public interface HunterConfig extends Config
+public interface hHunterConfig extends Config
 {
     @ConfigSection(
             name = "Hunter type",
@@ -18,7 +18,7 @@ public interface HunterConfig extends Config
 
     @ConfigItem(
             keyName = "hunterType",
-            name = "Hunter type",
+            name = "Animal",
             description = "Type of animal to catch",
             position = 1,
             section = hunter

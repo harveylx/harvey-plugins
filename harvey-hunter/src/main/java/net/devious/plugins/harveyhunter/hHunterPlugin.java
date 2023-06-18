@@ -4,6 +4,7 @@ import com.google.inject.Inject;
 import com.google.inject.Provides;
 import lombok.Getter;
 import lombok.Setter;
+import net.devious.plugins.harveyhunter.strategies.salamander.SwampLizardInventoryStrategy;
 import net.devious.plugins.harveyhunter.tasks.CheckInventory;
 import net.devious.plugins.harveyhunter.tasks.CheckTraps;
 import net.devious.plugins.harveyhunter.tasks.Loot;
@@ -25,11 +26,11 @@ import java.util.concurrent.ConcurrentHashMap;
         enabledByDefault = false
 )
 
-public class HarveyHunterPlugin extends TaskPlugin
+public class hHunterPlugin extends TaskPlugin
 {
     private final Task[] tasks =
             {
-                    new CheckInventory(this),
+                    new CheckInventory(this, new SwampLizardInventoryStrategy(this)),
                     new PlaceTraps(this),
                     new CheckTraps(this),
                     new Loot(this)
@@ -54,11 +55,11 @@ public class HarveyHunterPlugin extends TaskPlugin
 
     @Inject
     @Getter
-    private HunterConfig config;
+    private hHunterConfig config;
 
     @Provides
-    HunterConfig provideConfig(ConfigManager configManager)
+    hHunterConfig provideConfig(ConfigManager configManager)
     {
-        return configManager.getConfig(HunterConfig.class);
+        return configManager.getConfig(hHunterConfig.class);
     }
 }

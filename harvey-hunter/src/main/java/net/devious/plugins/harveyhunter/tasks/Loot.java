@@ -1,20 +1,20 @@
 package net.devious.plugins.harveyhunter.tasks;
 
 import lombok.extern.slf4j.Slf4j;
-import net.devious.plugins.harveyhunter.HarveyHunterPlugin;
-import net.devious.plugins.harveyhunter.HunterContext;
+import net.devious.plugins.harveyhunter.hHunterPlugin;
+import net.devious.plugins.harveyhunter.hHunterContext;
 import net.runelite.api.ItemID;
 import net.runelite.api.TileItem;
 import net.unethicalite.api.commons.Time;
+import net.unethicalite.api.entities.Players;
 import net.unethicalite.api.entities.TileItems;
 
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 
 @Slf4j
-public class Loot extends HunterContext
+public class Loot extends hHunterContext
 {
-    public Loot(HarveyHunterPlugin context)
+    public Loot(hHunterPlugin context)
     {
         super(context);
     }
@@ -22,7 +22,14 @@ public class Loot extends HunterContext
     @Override
     public boolean validate()
     {
-        return true;
+        return !Players.getLocal().isInteracting() && Players.getLocal().isIdle();
+    }
+
+    @Override
+    public boolean isBlocking()
+    {
+        List<TileItem> loot = TileItems.getSurrounding(getCenterTile(), 10, getConfig().hunterType().getTrapItemIds());
+        return loot.size() != 0;
     }
 
     @Override
@@ -31,11 +38,8 @@ public class Loot extends HunterContext
         List<TileItem> loot = TileItems.getSurrounding(getCenterTile(), 10, ItemID.ROPE, ItemID.SMALL_FISHING_NET);
         if (loot.size() != 0)
         {
-            log.info("Size of the loot table is {}", loot.size());
-            AtomicInteger loopCount = new AtomicInteger();
             loot.forEach(i ->
             {
-                log.info(String.valueOf(loopCount.incrementAndGet()));
                 i.pickup();
                 Time.sleepTicks(3);
             });

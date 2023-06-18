@@ -1,8 +1,8 @@
 package net.devious.plugins.harveyhunter.tasks;
 
 import lombok.extern.slf4j.Slf4j;
-import net.devious.plugins.harveyhunter.HarveyHunterPlugin;
-import net.devious.plugins.harveyhunter.HunterContext;
+import net.devious.plugins.harveyhunter.hHunterPlugin;
+import net.devious.plugins.harveyhunter.hHunterContext;
 import net.runelite.api.GameObject;
 import net.runelite.api.ObjectID;
 import net.runelite.api.TileObject;
@@ -20,9 +20,9 @@ import java.util.Iterator;
 import java.util.Map;
 
 @Slf4j
-public class CheckTraps extends HunterContext
+public class CheckTraps extends hHunterContext
 {
-    public CheckTraps(HarveyHunterPlugin context)
+    public CheckTraps(hHunterPlugin context)
     {
         super(context);
     }
@@ -60,10 +60,12 @@ public class CheckTraps extends HunterContext
 
             if (trap.getState() == HunterTrap.State.FULL)
             {
-                TileObject trapObject = TileObjects.getFirstSurrounding(getCenterTile(), 5, ObjectID.NET_TRAP_9004);
+                TileObject trapObject = TileObjects.getFirstSurrounding(getCenterTile(), 5,
+                        getConfig().hunterType().getCaughtTrapObjectIds());
+
                 if (trapObject != null)
                 {
-                    trapObject.interact("Net trap", "Check");
+                    trapObject.interact(getConfig().hunterType().getInteractText());
                     Time.sleepTicks(4);
                     iterator.remove();
                 }
