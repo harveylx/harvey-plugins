@@ -5,7 +5,6 @@ import net.devious.plugins.harveyhunter.HarveyHunterPlugin;
 import net.devious.plugins.harveyhunter.HunterContext;
 import net.runelite.api.GameObject;
 import net.runelite.api.ObjectID;
-import net.runelite.api.Player;
 import net.runelite.api.TileObject;
 import net.runelite.api.coords.Angle;
 import net.runelite.api.coords.Direction;
@@ -31,8 +30,11 @@ public class CheckTraps extends HunterContext
     @Override
     public boolean validate()
     {
-        log.info(String.valueOf(getTraps().size()));
-        return getTraps().size() > 0;
+        return getTraps().size() > 0
+                && !Players.getLocal().isAnimating()
+                && !Players.getLocal().isInteracting()
+                && !Players.getLocal().isMoving()
+                && Players.getLocal().isIdle();
     }
 
     @Override
@@ -58,15 +60,13 @@ public class CheckTraps extends HunterContext
 
             if (trap.getState() == HunterTrap.State.FULL)
             {
-                Player local = Players.getLocal();
-
-                TileObject trapObject = TileObjects.getFirstSurrounding(local.getWorldLocation(), 3, ObjectID.NET_TRAP_9004);
+                TileObject trapObject = TileObjects.getFirstSurrounding(getCenterTile(), 5, ObjectID.NET_TRAP_9004);
                 if (trapObject != null)
                 {
                     trapObject.interact("Net trap", "Check");
                     Time.sleepTicks(4);
+                    iterator.remove();
                 }
-                iterator.remove();
             }
         }
         return -3;
@@ -103,13 +103,11 @@ public class CheckTraps extends HunterContext
             if (myTrap != null)
             {
                 myTrap.setState(HunterTrap.State.FULL);
-                myTrap.resetTimer();
             }
         }
 
         if (gameObject.getId() == ObjectID.YOUNG_TREE_9341)
         {
-            log.info("Removing trap from collection as it broke");
             getTraps().remove(trapLocation);
         }
     }

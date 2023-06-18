@@ -3,6 +3,7 @@ package net.devious.plugins.harveyhunter;
 import com.google.inject.Inject;
 import com.google.inject.Provides;
 import lombok.Getter;
+import lombok.Setter;
 import net.devious.plugins.harveyhunter.tasks.CheckInventory;
 import net.devious.plugins.harveyhunter.tasks.CheckTraps;
 import net.devious.plugins.harveyhunter.tasks.Loot;
@@ -16,8 +17,7 @@ import net.unethicalite.api.plugins.Task;
 import net.unethicalite.api.plugins.TaskPlugin;
 import org.pf4j.Extension;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 @Extension
 @PluginDescriptor(
@@ -42,7 +42,11 @@ public class HarveyHunterPlugin extends TaskPlugin
     }
 
     @Getter
-    protected final Map<WorldPoint, HunterTrap> traps = new HashMap<>();
+    protected final ConcurrentHashMap<WorldPoint, HunterTrap> traps = new ConcurrentHashMap<>();
+
+    @Getter
+    @Setter
+    protected WorldPoint centerTile;
 
     @Inject
     @Getter

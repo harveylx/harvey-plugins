@@ -49,6 +49,6 @@ public interface HunterConfig extends Config
     )
     default int maxTraps()
     {
-        return 2;
+        return 3;
     }
 }

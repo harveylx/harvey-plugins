@@ -36,7 +36,12 @@ public class PlaceTraps extends HunterContext
         {
             Player local = Players.getLocal();
 
-            TileObject trapObject = TileObjects.getFirstSurrounding(local.getWorldLocation(), 3, getConfig().hunterType().getTrapObjectIds());
+            if (getCenterTile() == null)
+            {
+                setCenterTile(local.getWorldLocation());
+            }
+
+            TileObject trapObject = TileObjects.getFirstSurrounding(getCenterTile(), 3, getConfig().hunterType().getTrapObjectIds());
             if (trapObject != null)
             {
                 trapObject.interact("Young Tree", "Set-trap");
